@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "windows" }}
 packages.config
 winget-export.json
 Documents/PowerShell
