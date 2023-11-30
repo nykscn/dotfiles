@@ -1,0 +1,5 @@
+tap "homebrew/bundle"
+cask "alfred"
+cask "google-japanese-ime"
+cask "karabiner-elements"
+cask "visual-studio-code"
