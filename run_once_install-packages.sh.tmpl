@@ -6,7 +6,7 @@ brew bundle
 curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
-echo 'export PATH=$PATH:`pwd`bin/' >> ~/.zshrc
+echo 'export PATH=$PATH:`pwd`/bin' >> ~/.zshrc
 
 release_info=$(curl -s https://api.github.com/repos/yuru7/udev-gothic/releases/latest)
 zip_url=$(echo $release_info | tr -d '\000-\031' | jq -r '.assets[] | select(.name | endswith(".zip") and contains("_NF_")) | .browser_download_url')
