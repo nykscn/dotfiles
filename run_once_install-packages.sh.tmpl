@@ -11,5 +11,6 @@ release_info=$(curl -s https://api.github.com/repos/yuru7/udev-gothic/releases/l
 zip_url=$(echo $release_info | tr -d '\000-\031' | jq -r '.assets[] | select(.name | endswith(".zip") and contains("_NF_")) | .browser_download_url')
 curl -L -o UDEVGothic_NF_latest.zip $zip_url
 unzip UDEVGothic_NF_latest.zip
-cp UDEVGothic_NF_latest/*.ttf ~/Library/Fonts/
+cp UDEVGothic_NF_*/*.ttf ~/Library/Fonts/
+rm -rf UDEVGothic_NF_*
 {{ end -}}
