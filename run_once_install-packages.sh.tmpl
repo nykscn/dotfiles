@@ -1,5 +1,6 @@
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin" | eq .chezmoi.os "linux") -}}
 #!/bin/sh
+{{ end -}}
 brew tap 'homebrew/bundle'
 brew bundle
 
@@ -17,7 +18,6 @@ rm -rf UDEVGothic_NF_*
 {{ end -}}
 {{ if eq .chezmoi.os "linux" -}}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-#!/bin/sh
 sudo apt-get install zsh
 chsh -s /bin/zsh
 
