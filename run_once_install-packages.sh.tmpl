@@ -1,5 +1,7 @@
-{{ if (eq .chezmoi.os "darwin" | eq .chezmoi.os "linux") -}}#!/bin/sh
+{{ if (eq .chezmoi.os "darwin" | eq .chezmoi.os "linux") -}}
+#!/bin/sh
 {{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
 brew tap 'homebrew/bundle'
 brew bundle
 
