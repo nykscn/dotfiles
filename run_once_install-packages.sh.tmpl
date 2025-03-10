@@ -1,5 +1,7 @@
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin" | eq .chezmoi.os "linux") -}}
 #!/bin/sh
+{{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
 brew tap 'homebrew/bundle'
 brew bundle
 
@@ -15,14 +17,13 @@ unzip UDEVGothic_NF_latest.zip
 cp UDEVGothic_NF_*/*.ttf ~/Library/Fonts/
 rm -rf UDEVGothic_NF_*
 {{ end -}}
-
-{{ if eq .chezmoi.os "linux" }}
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-#!/bin/sh
+{{ if eq .chezmoi.os "linux" -}}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 sudo apt-get install zsh
 chsh -s /bin/zsh
 
 curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
-{{   end }}
-{{ end }}
+{{    end -}}
+{{ end -}}
+
