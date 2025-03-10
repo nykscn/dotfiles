@@ -11,4 +11,9 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # WSL-specific code
 {{   end }}
+{{ else if eq .chezmoi.os "windows" }}
+winget import -i PATH\TO\IMPORT.JSON
 {{ end }}
+
+
+winget import -i PATH\TO\IMPORT.JSON

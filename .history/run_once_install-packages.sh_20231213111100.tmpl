@@ -15,14 +15,3 @@ unzip UDEVGothic_NF_latest.zip
 cp UDEVGothic_NF_*/*.ttf ~/Library/Fonts/
 rm -rf UDEVGothic_NF_*
 {{ end -}}
-
-{{ if eq .chezmoi.os "linux" }}
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-#!/bin/sh
-sudo apt-get install zsh
-chsh -s /bin/zsh
-
-curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
-{{   end }}
-{{ end }}
