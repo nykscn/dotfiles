@@ -19,11 +19,19 @@ rm -rf UDEVGothic_NF_*
 {{ end -}}
 {{ if eq .chezmoi.os "linux" -}}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-sudo apt-get install zsh
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y zsh git gh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install skim
+
 chsh -s /bin/zsh
+
 
 curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+
+sudo systemctl enable --now snapd
 {{    end -}}
 {{ end -}}
 
