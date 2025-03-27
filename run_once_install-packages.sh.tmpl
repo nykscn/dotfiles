@@ -21,17 +21,30 @@ rm -rf UDEVGothic_NF_*
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y zsh git gh
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install skim
+sudo apt install -y zsh git gh build-essential 
 
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# change default shell to zsh
 chsh -s /bin/zsh
 
-
+# install starship
 curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
+# enable snapd
 sudo systemctl enable --now snapd
+
+# install proto
+zsh <(curl -fsSL https://moonrepo.dev/install/proto.sh) --yes
+# install node
+proto install node
+proto install pnpm
+pnpm i -g @antfu/ni
+
+source ~/.zshrc
+cargo install skim
 {{    end -}}
 {{ end -}}
 
